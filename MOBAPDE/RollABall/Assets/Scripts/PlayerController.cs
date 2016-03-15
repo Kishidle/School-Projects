@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
 	{
-        
+        moveHorizontal = 0.0f;
+        moveVertical = 0.0f;
 		if (Application.platform == RuntimePlatform.Android) {
             if (isLeftPressed|| isRightPressed|| isDownPressed|| isUpPressed){
 
