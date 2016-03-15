@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 			else if (touchPos.x >= 0 && touchPos.x <= 100 && touchPos.y < maxY - 100 && touchPos.y > 100) {
 				moveHorizontal = -1.0f;
 			} 
-			else if (touchPos.y <= maxY && touchPos.y > maxY - 100 && touchPos.x < maxX - 100 && touchPos.x > 100) {
+			if (touchPos.y <= maxY && touchPos.y > maxY - 100 && touchPos.x < maxX - 100 && touchPos.x > 100) {
                 moveVertical = 1.0f;
 			}
             else if(touchPos.y >= 0 && touchPos.y <= 100 && touchPos.x < maxX - 100 && touchPos.x > 100) {
