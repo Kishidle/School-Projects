@@ -8,11 +8,7 @@ int main(){
 	int lineFlag = 0;
 	int tabFlag = 0;
 	int skipFlag = 0;
-	int intFlag = 0;
-	int charFlag = 0;
-	int doubleFlag = 0;
-	int floatFlag = 0;
-	int voidFlag = 0;
+	int functionFlag = 0;
 	int i;
 	if(fp != NULL){
 		char line[1024];	
@@ -22,10 +18,25 @@ int main(){
 					lineFlag = 1;
 					break;
 				}
-				if((line[0] == 'i' && line[1] == 'n' && line[2] == 't') || intFlag){
+				// this segment of code is for checking if the line is eligible to be a function
+				// if true, then check if the line has ()
+				// also, retrieve the function name 
+				if(line[0] == 'i' && line[1] == 'n' && line[2] == 't'){
 					
 				}
-				else if((line[0] == 'd' && line[1] == 'o' && line[2] == 'u' && line[3] == 'b' && line[4] == 'l' && line[5] == 'e') && doubleFlag)
+				else if(line[0] == 'd' && line[1] == 'o' && line[2] == 'u' && line[3] == 'b' && line[4] == 'l' && line[5] == 'e'){
+				}
+				else if(line[0] == 'f' && line[1] == 'l' && line[2] == 'o' && line[3] == 'a' && line[5] == 't'){
+					
+				}
+				else if(line[0] == 'c' && line[1] == 'h' && line[2] == 'a' && line[3] == 'r'){
+					
+				}
+				else if(line[0] == 'v' && line[1] == 'o' && line[2] == 'i' && line[3] == 'd'){
+				}
+				else if(line[0] == '}'){
+					//code for end of function
+				}
 				if(line[i] == '/' && line[i+1] == '*'){
 					lineFlag = 1;
 					multiFlag = 1;
