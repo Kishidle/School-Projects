@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 int main(){
-	FILE *fp = fopen("sofmeth psp1 arca.c", "r");
+	FILE *fp = fopen("PSPProgram2A_ARCA.c", "r");
 	int lineCount = 0;
 	int fLineCount = 0;
 	int multiFlag = 0;
@@ -23,9 +23,6 @@ int main(){
 					lineFlag = 1;
 					break;
 				}
-				// this segment of code is for checking if the line is eligible to be a function
-				// if true, then check if the line has ()
-				// also, retrieve the function name 
 				if(line[0] == 'i' && line[1] == 'n' && line[2] == 't'){
 					if(i >= 3 && line[i] != '(' && !nameFlag){
 						if(line[i + 1] == '(') nameFlag = 1;
@@ -89,12 +86,9 @@ int main(){
 					nameFlag = 0;
 					openFlag = 0;
 					fLineCount++;
-					//print func name plus LOC
 					printf("%s LOC: %d\n", funcName, fLineCount);	
-					//recycle variable
 					memset(funcName, 0, sizeof(funcName));
 					fLineCount = 0;
-					//code for end of function
 				}
 				if(line[i] == '/' && line[i+1] == '*'){
 					lineFlag = 1;
