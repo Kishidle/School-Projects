@@ -1,13 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-int test(){
-	printf("hello");
-}
-void fail(){
-	printf("does it work");
-	printf("yes");
-}
 int main(){
 	int n;
 	int i;
