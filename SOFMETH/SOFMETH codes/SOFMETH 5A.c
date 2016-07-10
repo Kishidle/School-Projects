@@ -1,4 +1,4 @@
-#include<stdioh.h>
+#include<stdio.h>
 #include<math.h>
 
 int main(){
@@ -14,44 +14,68 @@ int main(){
 	float temp = 0;
 	float y = 0;
 	float e = 2.71828;
+	float err = 0;
 	float f = 0;
 	float z = 0;
 	float v = 0.39894;
+	printf("Enter x: ");
+	scanf("%f", &x);
+	printf("Enter N: ");
+	scanf("%d", &n);
 	// enter x
 	// enter n (must be an even number)
 	
 	if(x >= 0){
 		integrateFlag = 1;
 	}
-	else x = abs(x);
-	
+	else x = fabs(x);
 	//W = (xhi - xlo) / N
 	w = x / n;
-	temp = x;
+	temp = w;
 	x = 0;
 	//start loop here
+	while(1){
+	
 	//calculate simpson's rule
-	//where is permissible error coming from?
-	for(i = 0; i <= n; i++){
-		if(i ! = 0) x = x + temp;
+	//where is permissible error coming from? error = abs(termResult - oldResult)? need more info
+		for(i = 0; i <= n; i++){
+			if(i != 0) x = x + temp;
+			//need error checking for x = 0 so that it won't error
+			
+			y = pow(x, 2) / 2;
+			//printf("%f\n", y);
+			z = pow(e, (-1 * y));
+			//printf("%f\n", z);
+			f = v * z;
+			//printf("%.5f\n", f);
+			if(i == 0 || i == n){
+				termResult = termResult + (f * w / 3);
+			}
+			
+			else if(i % 2 == 0){
+				termResult = termResult + (2 * f * w / 3);
+			}
+			else if(i % 2 != 0){
+				termResult = termResult + (4 * f * w / 3);
+			}
 		
-		y = pow(x, 2) / 2;
-		z = pow(e, (-1 * y);
-		f = v * z;
-		if(i % 2 == 0){
-			termResult = termResult + (2 * f * w / 3);
+		}
+		if(abs(termResult - oldResult) <= err){
+			//answer
+			break;
 		}
 		else{
-			termResult = termResult + (4 * f * w / 3);
+			err = abs(termResult - oldResult);
+			oldResult = termResult;
+			n = 2*n;
 		}
-		
+		//loop back
+	
 	}
-	if(abs(termResult - oldResult) <= E){
-		//answer
-	}
-	else{
-		oldResult = termResult;
-		n = 2*n;
-	}
-	//loop back
+	if(integrateFlag) termResult = termResult + 0.5;
+	else termResult = 0.5 - termResult;
+	
+	printf("Result: %f", termResult);
+	
+	
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 int main(){
-	FILE *fp = fopen("SOFMETH 4A.c", "r");
+	FILE *fp = fopen("SOFMETH 5A.c", "r");
 	int lineCount = 0;
 	int fLineCount = 0;
 	int multiFlag = 0;
