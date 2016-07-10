@@ -37,7 +37,6 @@ int main(){
 	while(1){
 	
 	//calculate simpson's rule
-	//where is permissible error coming from? error = abs(termResult - oldResult)? need more info
 		for(i = 0; i <= n; i++){
 			if(i != 0) x = x + temp;
 			//need error checking for x = 0 so that it won't error
