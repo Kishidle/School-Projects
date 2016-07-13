@@ -5,6 +5,9 @@
 int main(){
 	
 	int select;
+	char fromText[64];
+	char input[64];
+	char pattern[64];
 	
 	printf("Select method of searching: \n");
 	printf("[1] With string functions \n");
@@ -12,12 +15,23 @@ int main(){
 	
 	scanf("%d", &select);
 	
-	if(select == 1){
+	FILE *fp;
+	
+	fp = fopen("input.txt");
+	if(fp != NULL){
 		
-		//use strstr() with a char pointer as the one to receive
-	}
-	else if(select == 2){
+		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 		
-		//use for loops to compare characters from the text and the pattern
+			if(select == 1){
+				
+				//use strstr() with a char pointer
+			}
+			else if(select == 2){
+		
+			
+				//use for loops to compare characters from the text and the pattern
+			}
+		}
+	
 	}
 }
