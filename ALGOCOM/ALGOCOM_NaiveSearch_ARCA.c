@@ -9,6 +9,10 @@ int main(){
 	char input[64];
 	char pattern[64];
 	int i = 0;
+	int j = 0;
+	int temp = 0;
+	int shift = -1;
+	int patternFlag = 0;
 	int flag = 0;
 	printf("Select method of searching: \n");
 	printf("[1] With string functions \n");
@@ -32,8 +36,8 @@ int main(){
 					
 					else strcat(input, fromText[i]);
 				}
-				else{
-					i++;
+				else if(fromText[i] == '.'){
+					
 					flag = 1;
 				}
 			}
@@ -49,7 +53,14 @@ int main(){
 			}
 			else if(select == 2){
 		
-			
+				for(i = 0; i < strlen(fromText); i++){
+					
+				
+				}
+				
+				if(shift == -1){
+					printf("Invalid shift\n");
+				}
 				//use for loops to compare characters from the text and the pattern
 			}
 			
