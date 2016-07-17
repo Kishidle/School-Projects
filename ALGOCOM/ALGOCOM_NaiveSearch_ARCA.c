@@ -54,7 +54,9 @@ int main(){
 			else if(select == 2){
 		
 				for(i = 0; i < strlen(fromText); i++){
-					
+					//was doing 2 loops before, realized you don't need to do that at all
+					//just stick to one loop and compare by moving both indexes in text and pattern if it matches
+					//find the first index that a comparison occurs to get the shift
 				
 				}
 				
