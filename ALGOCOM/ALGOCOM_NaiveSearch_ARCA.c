@@ -57,10 +57,21 @@ int main(){
 					//was doing 2 loops before, realized you don't need to do that at all
 					//just stick to one loop and compare by moving both indexes in text and pattern if it matches
 					//find the first index that a comparison occurs to get the shift
-				
+					if(fromText[i] == pattern[j]){
+						if(shift == -1) shift = i;
+						if(j + 1 > strlen(pattern)){
+							printf(" Shift at %d", &shift);
+							patternFlag = 1;
+						} 
+						j++;
+					}
+					else{
+						j = 0;
+						
+					}
 				}
 				
-				if(shift == -1){
+				if(shift == -1 && !patternFlag){ //can i not use patternFlag?
 					printf("Invalid shift\n");
 				}
 				//use for loops to compare characters from the text and the pattern
