@@ -42,7 +42,7 @@ int main(){
 					flag = 1;
 				}
 			}
-			
+			flag = 0;
 			if(select == 1){
 				
 				//find all occurences of substring pattern in input
