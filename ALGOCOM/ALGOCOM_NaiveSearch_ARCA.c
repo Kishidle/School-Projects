@@ -6,8 +6,9 @@ int main(){
 	
 	int select;
 	char fromText[64];
-	char input[64];
+	char input[64] = "";
 	char pattern[64];
+	char result[64] = "";
 	int i = 0;
 	int j = 0;
 	int temp = 0;
@@ -22,7 +23,7 @@ int main(){
 	
 	FILE *fp;
 	
-	fp = fopen("input.txt");
+	fp = fopen("input.txt", "r");
 	if(fp != NULL){
 		
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
@@ -32,9 +33,9 @@ int main(){
 				
 				if(fromText[i] != '.'){
 					
-					if(flag) strcat(pattern, fromText[i]);
+					if(flag) strncat(pattern, &fromText[i], 1);
 					
-					else strcat(input, fromText[i]);
+					else strncat(input, &fromText[i], 1);
 				}
 				else if(fromText[i] == '.'){
 					
@@ -45,33 +46,42 @@ int main(){
 			if(select == 1){
 				
 				//find all occurences of substring pattern in input
-				while(strstr(input, pattern) != NULL){
+				//iterate per index, "cut" the string then compare the string with pattern
+				for(i = 0; i < strlen(input); i++){
 					
-					
+					for(j = i; j < strlen(pattern); j++){
+						
+						strncat(result, &input[j], 1);
+					}
+					if(strcmp(input, pattern) == 0) printf("Shift at %d", i);
+					memset(input, 0, sizeof(input));
 				}
+				
+				
 				
 			}
 			else if(select == 2){
 		
-				for(i = 0; i < strlen(fromText); i++){
-					//was doing 2 loops before, realized you don't need to do that at all
-					//just stick to one loop and compare by moving both indexes in text and pattern if it matches
-					//find the first index that a comparison occurs to get the shift
-					if(fromText[i] == pattern[j]){
-						if(shift == -1) shift = i;
-						if(j + 1 > strlen(pattern)){
-							printf(" Shift at %d", &shift);
-							patternFlag = 1;
-						} 
-						j++;
-					}
-					else{
-						j = 0;
+				for(i = 0; i < strlen(input); i++){
+					
+					for(j = 0; j < strlen(pattern); j++){
 						
+						if(input[i + j] == pattern[j]){
+							flag = 1;
+						}
+						else{
+							flag = 0;
+							break;
+						}
 					}
+					if(flag){			
+						printf("Shift at %d", i);
+						shift = 1;
+					}
+					
 				}
 				
-				if(shift == -1 && !patternFlag){ //can i not use patternFlag?
+				if(shift == -1){ //can i not use patternFlag?
 					printf("Invalid shift\n");
 				}
 				//use for loops to compare characters from the text and the pattern
@@ -80,6 +90,7 @@ int main(){
 			
 			//reset values
 			flag = 0;
+			shift = -1;
 		}
 	
 	}
