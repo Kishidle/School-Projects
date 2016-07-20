@@ -30,7 +30,9 @@ int main(){
 		
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 		
-			printf("%s\n", fromText);
+			int length = strlen(fromText);
+			if(fromText[length - 1] == '\n') fromText[length - 1] = '\0';
+			printf("\n%s\n", fromText);
 			//find text and pattern from line acquired
 			for(i = 0; i < strlen(fromText); i++){
 				
@@ -60,8 +62,10 @@ int main(){
 						
 						strncat(result, &input[i + j], 1);
 					}
+					
 					if(strcmp(result, pattern) == 0){
-						printf("Shift at %d\n", i);
+				
+						printf("Pattern occurs with shift %d\n", i);
 						shift = 1;
 					} 
 					memset(result, 0, sizeof(result));
@@ -72,7 +76,7 @@ int main(){
 				
 			}
 			else if(select == 2){
-				//can we use strlen here?
+			
 				
 				while(input[textLength] != '\0')
 					textLength++;
@@ -88,25 +92,29 @@ int main(){
 							flag = 1;
 						}
 						else{
+							
 							flag = 0;
 							break;
 						}
 					}
+					
 					if(flag){			
-						printf("Shift at %d\n", i);
+						printf("Pattern occurs with shift %d\n", i);
 						shift = 1;
 					}
 					
 				}
 				
-				if(shift == -1){ //can i not use patternFlag?
+				if(shift == -1){ 
 					printf("Invalid shift\n");
 				}
 				//use for loops to compare characters from the text and the pattern
 			}
-			
-			
 			//reset values
+			memset(input, 0, sizeof(input));
+			memset(pattern, 0, sizeof(pattern));
+			textLength = 0;
+			patternLength = 0;
 			flag = 0;
 			shift = -1;
 		}
