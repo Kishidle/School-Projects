@@ -11,6 +11,8 @@ int main(){
 	char result[64] = "";
 	int i = 0;
 	int j = 0;
+	int textLength = 0;
+	int patternLength = 0;
 	int temp = 0;
 	int shift = -1;
 	int patternFlag = 0;
@@ -28,6 +30,7 @@ int main(){
 		
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 		
+			printf("%s\n", fromText);
 			//find text and pattern from line acquired
 			for(i = 0; i < strlen(fromText); i++){
 				
@@ -42,29 +45,44 @@ int main(){
 					flag = 1;
 				}
 			}
+			
+			
 			flag = 0;
 			if(select == 1){
+				
 				
 				//find all occurences of substring pattern in input
 				//iterate per index, "cut" the string then compare the string with pattern
 				for(i = 0; i < strlen(input); i++){
 					
-					for(j = i; j < strlen(pattern); j++){
+					for(j = 0; j < strlen(pattern); j++){
 						
-						strncat(result, &input[j], 1);
+						
+						strncat(result, &input[i + j], 1);
 					}
-					if(strcmp(input, pattern) == 0) printf("Shift at %d", i);
-					memset(input, 0, sizeof(input));
+					if(strcmp(result, pattern) == 0){
+						printf("Shift at %d\n", i);
+						shift = 1;
+					} 
+					memset(result, 0, sizeof(result));
+					
 				}
-				
+				if(shift == -1) printf("Invalid shift\n");
 				
 				
 			}
 			else if(select == 2){
-		
-				for(i = 0; i < strlen(input); i++){
+				//can we use strlen here?
+				
+				while(input[textLength] != '\0')
+					textLength++;
+				
+				while(pattern[patternLength] != '\0') 
+					patternLength++;
+				
+				for(i = 0; i < textLength; i++){
 					
-					for(j = 0; j < strlen(pattern); j++){
+					for(j = 0; j < patternLength; j++){
 						
 						if(input[i + j] == pattern[j]){
 							flag = 1;
@@ -75,7 +93,7 @@ int main(){
 						}
 					}
 					if(flag){			
-						printf("Shift at %d", i);
+						printf("Shift at %d\n", i);
 						shift = 1;
 					}
 					
