@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
 			printf("\nString %d: \n", n);
 			printf("\n%s\n", fromText);
 			//find text and pattern from line acquired
-			for(i = 0; i < strlen(fromText); i++){
+			for(i = 0; i < length; i++){
 				
 				printf("\n%d\n", i);
 				if(fromText[i] != '.'){
