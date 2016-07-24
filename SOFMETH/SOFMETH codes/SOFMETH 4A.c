@@ -50,8 +50,8 @@ int main(){
 	int estObjLOC[] = {130, 650, 99, 150, 128, 302, 95, 945, 368, 961};
 	int estNaCLOC[] = {163, 765, 141, 166, 137, 355, 136, 1206, 433, 1130};
 	int actNaCLOC[] = {186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601};
-	int userEst[] = {0, 0, 0};
-	int userAct[] = {0, 0, 0};
+	int userEst[] = {0, 0, 0, 0};
+	int userAct[] = {0, 0, 0, 0};
 	
 	for(x = 0; x < 3; x++){
 		
@@ -80,8 +80,12 @@ int main(){
 			scanf("%d", &userEst[2]);
 			printf("Input actual LOC for program 4A\n");
 			scanf("%d", &userAct[2]);
+			printf("blah\n");
+			scanf("%d", &userEst[3]);
+			printf("blah2\n");
+			scanf("%d", &userAct[3]);
 		
-			computeParam(userEst, userAct, 3);
+			computeParam(userEst, userAct, 4);
 		}
 		printf("\n");
 	}

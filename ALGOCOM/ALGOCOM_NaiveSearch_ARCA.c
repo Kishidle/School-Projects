@@ -2,12 +2,13 @@
 #include<string.h>
 #include<stdlib.h>
 
-int main(){
+int main(int argc, char *argv[]){
 	
-	int select;
-	char fromText[64];
+	int select = 0;
+	select = atoi(argv[1]);
+	char fromText[128];
 	char input[64] = "";
-	char pattern[64];
+	char pattern[64] = "";
 	char result[64] = "";
 	int i = 0;
 	int j = 0;
@@ -20,34 +21,42 @@ int main(){
 	printf("Select method of searching: \n");
 	printf("[1] With string functions \n");
 	printf("[2] Without string functions \n");
-	
-	scanf("%d", &select);
-	
+	int n = 1;
+	//scanf("%d", &select);
+	printf("%d\n", select);
+	printf("%s \n", argv[2]);
 	FILE *fp;
-	
-	fp = fopen("input.txt", "r");
+	select = 1;
+	fp = fopen("input3.txt", "r");
 	if(fp != NULL){
-		
+			
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 		
 			int length = strlen(fromText);
+			printf("\n%d\n", length);
 			if(fromText[length - 1] == '\n') fromText[length - 1] = '\0';
+			printf("\nString %d: \n", n);
 			printf("\n%s\n", fromText);
 			//find text and pattern from line acquired
 			for(i = 0; i < strlen(fromText); i++){
 				
+				printf("\n%d\n", i);
 				if(fromText[i] != '.'){
 					
-					if(flag) strncat(pattern, &fromText[i], 1);
+					if(flag){
+						printf("did it go here");
+						strncat(pattern, &fromText[i], 1);	
+					} 
 					
 					else strncat(input, &fromText[i], 1);
 				}
 				else if(fromText[i] == '.'){
-					
+					printf("did it go here");
 					flag = 1;
 				}
 			}
-			
+			printf("\n%s\n%s", input, pattern);
+			printf("\n%d\n", strlen(pattern));
 			
 			flag = 0;
 			if(select == 1){
@@ -58,7 +67,6 @@ int main(){
 				for(i = 0; i < strlen(input); i++){
 					
 					for(j = 0; j < strlen(pattern); j++){
-						
 						
 						strncat(result, &input[i + j], 1);
 					}
@@ -117,7 +125,10 @@ int main(){
 			patternLength = 0;
 			flag = 0;
 			shift = -1;
+			n++;
 		}
 	
 	}
+	fclose(fp);
+	return 0;
 }
