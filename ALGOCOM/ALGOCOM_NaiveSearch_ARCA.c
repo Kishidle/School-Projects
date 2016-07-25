@@ -24,39 +24,39 @@ int main(int argc, char *argv[]){
 	int n = 1;
 	//scanf("%d", &select);
 	printf("%d\n", select);
-	printf("%s \n", argv[2]);
+	//printf("%s \n", argv[2]);
 	FILE *fp;
 	select = 1;
-	fp = fopen("input3.txt", "r");
+	fp = fopen("input(3).txt", "r");
 	if(fp != NULL){
 			
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 		
 			int length = strlen(fromText);
-			printf("\n%d\n", length);
+			//printf("\n%d\n", length);
 			if(fromText[length - 1] == '\n') fromText[length - 1] = '\0';
 			printf("\nString %d: \n", n);
 			printf("\n%s\n", fromText);
 			//find text and pattern from line acquired
 			for(i = 0; i < length; i++){
 				
-				printf("\n%d\n", i);
+				//printf("\n%d\n", i);
 				if(fromText[i] != '.'){
 					
 					if(flag){
-						printf("did it go here");
+					//	printf("did it go here");
 						strncat(pattern, &fromText[i], 1);	
 					} 
 					
 					else strncat(input, &fromText[i], 1);
 				}
 				else if(fromText[i] == '.'){
-					printf("did it go here");
+				//	printf("did it go here");
 					flag = 1;
 				}
 			}
-			printf("\n%s\n%s", input, pattern);
-			printf("\n%d\n", strlen(pattern));
+			//printf("\n%s\n%s", input, pattern);
+			//printf("\n%d\n", strlen(pattern));
 			
 			flag = 0;
 			if(select == 1){
@@ -96,11 +96,10 @@ int main(int argc, char *argv[]){
 					
 					for(j = 0; j < patternLength; j++){
 						
-						if(input[i + j] == pattern[j]){
+						if(input[i + j] == pattern[j])
 							flag = 1;
-						}
-						else{
-							
+
+						else{	
 							flag = 0;
 							break;
 						}
@@ -113,9 +112,9 @@ int main(int argc, char *argv[]){
 					
 				}
 				
-				if(shift == -1){ 
+				if(shift == -1)
 					printf("Invalid shift\n");
-				}
+				
 				//use for loops to compare characters from the text and the pattern
 			}
 			//reset values
