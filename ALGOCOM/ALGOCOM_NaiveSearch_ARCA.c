@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
+//this program uses the naive search algorithm to find a matching pattern within a string
 int main(int argc, char *argv[]){
 	
 	int select = 0;
