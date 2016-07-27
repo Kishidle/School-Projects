@@ -2,38 +2,40 @@
 #include<stdlib.h>
 #include<string.h>
 //converts char to integer value
+/*
 int convertCI(char c){
 	return c - '0';
-}
+}*/
 
-
+//it does the rabinkarp algorithm
+//pls improve this
 int main(int argc, char *argv[]){
 	
 	char fromText[128] = "";
 	char input[128] = "";
 	char pattern[128] = "";
-	int i, j;
-	int q = 13;
+	int i = 0;
+	int j = 0;
+	int q = argv[1];
 	int patternLength = 0;
 	int flag = 0;
 	int rkArr[64] = { 0 };
 	FILE *fpread, fpwrite;
 	int patternq = 0;
-	fpread = fopen("input(4).txt", "r");
+	fpread = fopen(argv[2], "r");
 	//fpwrite = fopen("output.txt", "w");
 	int n = 0;
-	int x =0;
+	int x = 1;
 	int shift = -1;
 	if(fpread != NULL){
 		
 		while(fgets(fromText, sizeof(fromText), fpread) != NULL){
 			
 			int length = strlen(fromText);
-			printf("d\n\n%d", x);
 			if(fromText[length - 1] == '\n') 
 				fromText[length - 1] = '\0';
 			
-			printf("%s\n", fromText);
+			printf("String #%d: %s\n", x, fromText);
 			//get text and pattern
 			
 			for(i = 0; i < length; i++){
@@ -52,10 +54,7 @@ int main(int argc, char *argv[]){
 						strncat(input, &fromText[i], 1);
 						//kArr[i] = convertCI(fromText[i]);
 						
-						
 					}
-					
-				
 					 
 				}
 				
@@ -85,53 +84,41 @@ int main(int argc, char *argv[]){
 				
 				//printf("mod: %d \n", rkArr[i]);
 				//printf("pattern: %d \n", patternq);
-				++n;
+				n++;
 				
 			}
 			
-			for(i = 0; i < n; ++i){
+			for(i = 0; i < n; i++){
 				
 				if(rkArr[i] == patternq){
 					
-					
-					for(j = 0; j < strlen(pattern); ++j){
-						
-						printf("%d", i);
-						
+					for(j = 0; j < strlen(pattern); j++){
+												
 						if(input[i + j] == pattern[j]){
 						
 							flag = 1;
 						}
 						else{
 							flag = 0;
-							if(x == 73){
-							printf("helloagain");
-							}
 							break;
 						}
 						
 					}
-					if(x == 73){
-						printf("testerino");
-					}
 					//check the string?
 				}
-			
 				if(flag){
-					if(x == 73){
-							printf("flagerino");
-						}
+					
 					flag = 0;
-					printf("Pattern occurs with shift %d\n\n", i);
+					printf("Pattern occurs with shift %d\n", i);
 					shift = 1;
 				}
 				
 			}
-			printf("test");
 			if(shift == -1){
-				printf("Invalid shift\n\n");
+				printf("Invalid shift\n");
 			}
-			
+			printf("\n");
+			i = 0;
 			memset(input, 0, sizeof(input));
 			memset(pattern, 0, sizeof(pattern));
 			flag = 0;
@@ -139,10 +126,11 @@ int main(int argc, char *argv[]){
 			patternq = 0;
 			memset(rkArr, 0, sizeof(rkArr));
 			x++;
+			n = 0;
 		}
 	}
 	
-	
+	fclose(fpread);
 	
 	
 	return 0;
