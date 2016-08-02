@@ -30,9 +30,9 @@ int main(int argc, char* argv[]){
 
 
 	//KMP Searching Algorithm
-	char fromText[128] = "";
-	char input[128] = "";
-	char pattern[128] = "";
+	char fromText[130] = "";
+	char input[130] = "";
+	char pattern[130] = "";
 	//char result[ = "";
 	int i = 0;
 	int j = 0;
@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
 
 			int length = strlen(fromText);
-			int prefix[128] = { 0 };
+			int prefix[130] = { 0 };
 			//for(z = 0; z < 64; z++) printf("%d", prefix[z]);
             i = 0;
             j = 0;
