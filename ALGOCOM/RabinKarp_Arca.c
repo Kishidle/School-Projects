@@ -7,8 +7,8 @@ int convertCI(char c){
 	return c - '0';
 }*/
 
-//it does the rabinkarp algorithm
-//pls improve this
+//This program implements the RabinKarp Algorithm for string searching.
+//
 int main(int argc, char *argv[]){
 	
 	char fromText[128] = "";
@@ -16,13 +16,15 @@ int main(int argc, char *argv[]){
 	char pattern[128] = "";
 	int i = 0;
 	int j = 0;
-	int q = argv[1];
+	//int q = argv[1];
+	int q = 13;
 	int patternLength = 0;
 	int flag = 0;
 	int rkArr[64] = { 0 };
 	FILE *fpread, fpwrite;
 	int patternq = 0;
-	fpread = fopen(argv[2], "r");
+	//fpread = fopen(argv[2], "r");
+	fpread = fopen("inputall.txt", "r");
 	//fpwrite = fopen("output.txt", "w");
 	int n = 0;
 	int x = 1;
@@ -44,7 +46,7 @@ int main(int argc, char *argv[]){
 					
 					if(flag){
 						
-						//patternLength++; //decide whether to use this one or put it in an array instead
+						
 						strncat(pattern, &fromText[i], 1);
 						patternq = patternq + (int)fromText[i];
 						
@@ -66,28 +68,27 @@ int main(int argc, char *argv[]){
 			
 			patternq = patternq % q;
 			flag = 0;
-			// do we just add the ascii values or are we supposed to concatenate the integers together?
 			for(i = 0; i < strlen(input); i++){
 				
-				if(strlen(input) - i < strlen(pattern)){
+				if(strlen(input) - i < strlen(pattern)){ 
 					//printf("\n%d", i);
 					break;
 				}
 					
 				for(j = 0; j < strlen(pattern); j++){
 					
-					rkArr[i] = rkArr[i] + (int)input[i + j];
+					rkArr[i] = rkArr[i] + (int)input[i + j]; //basically adding everything within pattern's size
 					//printf("%d %d\n", j, (int)input[i+j]);
 				}
 				//printf("\n");
-				rkArr[i] = rkArr[i] % q;
+				rkArr[i] = rkArr[i] % q; //for hashing
 				
 				//printf("mod: %d \n", rkArr[i]);
 				//printf("pattern: %d \n", patternq);
 				n++;
 				
 			}
-			
+			//this part is the comparison
 			for(i = 0; i < n; i++){
 				
 				if(rkArr[i] == patternq){
@@ -104,7 +105,7 @@ int main(int argc, char *argv[]){
 						}
 						
 					}
-					//check the string?
+					
 				}
 				if(flag){
 					
@@ -117,6 +118,7 @@ int main(int argc, char *argv[]){
 			if(shift == -1){
 				printf("Invalid shift\n");
 			}
+			//variable reset for next loop
 			printf("\n");
 			i = 0;
 			memset(input, 0, sizeof(input));

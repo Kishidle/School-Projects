@@ -27,7 +27,7 @@ int main(int argc, char *argv[]){
 	//printf("%s \n", argv[2]);
 	FILE *fp;
 	select = 1;
-	fp = fopen("input(3).txt", "r");
+	fp = fopen("inputall.txt", "r");
 	if(fp != NULL){
 			
 		while(fgets(fromText, sizeof(fromText), fp) != NULL){
@@ -40,23 +40,20 @@ int main(int argc, char *argv[]){
 			//find text and pattern from line acquired
 			for(i = 0; i < length; i++){
 				
-				//printf("\n%d\n", i);
 				if(fromText[i] != '.'){
 					
 					if(flag){
-					//	printf("did it go here");
+					
 						strncat(pattern, &fromText[i], 1);	
 					} 
 					
 					else strncat(input, &fromText[i], 1);
 				}
 				else if(fromText[i] == '.'){
-				//	printf("did it go here");
 					flag = 1;
 				}
 			}
-			//printf("\n%s\n%s", input, pattern);
-			//printf("\n%d\n", strlen(pattern));
+		
 			
 			flag = 0;
 			if(select == 1){
@@ -85,7 +82,8 @@ int main(int argc, char *argv[]){
 			}
 			else if(select == 2){
 			
-				
+				//find all occurence of substring pattern in input
+				//compares per character instead of using string
 				while(input[textLength] != '\0')
 					textLength++;
 				
@@ -115,9 +113,9 @@ int main(int argc, char *argv[]){
 				if(shift == -1)
 					printf("Invalid shift\n");
 				
-				//use for loops to compare characters from the text and the pattern
+				
 			}
-			//reset values
+			//reset values for the next line
 			memset(input, 0, sizeof(input));
 			memset(pattern, 0, sizeof(pattern));
 			textLength = 0;

@@ -1,5 +1,1 @@
 abc.abc
-test.test
-xxxa.xxxa
-abcdef.abc
-defdefdef.def

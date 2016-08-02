@@ -1,0 +1,4 @@
+﻿  KNP_Arca.c
+c:\users\ramon\documents\github\school-projects\algocom\knp_arca.c(59): warning C4018: '<': signed/unsigned mismatch
+Debug\KNP_Arca.obj : warning LNK4042: object specified more than once; extras ignored
+  KNP_Arca.vcxproj -> C:\Users\Ramon\Documents\GitHub\School-Projects\ALGOCOM\KNP_Arca\Debug\KNP_Arca.exe
