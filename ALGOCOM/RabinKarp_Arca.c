@@ -11,9 +11,9 @@ int convertCI(char c){
 //
 int main(int argc, char *argv[]){
 	
-	char fromText[128] = "";
-	char input[128] = "";
-	char pattern[128] = "";
+	char fromText[130] = "";
+	char input[130] = "";
+	char pattern[130] = "";
 	int i = 0;
 	int j = 0;
 	//int q = argv[1];

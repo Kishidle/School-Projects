@@ -6,10 +6,10 @@ int main(int argc, char *argv[]){
 	
 	int select = 0;
 	select = atoi(argv[1]);
-	char fromText[128];
-	char input[64] = "";
-	char pattern[64] = "";
-	char result[64] = "";
+	char fromText[130];
+	char input[130] = "";
+	char pattern[130] = "";
+	char result[130] = "";
 	int i = 0;
 	int j = 0;
 	int textLength = 0;
@@ -23,10 +23,10 @@ int main(int argc, char *argv[]){
 	printf("[2] Without string functions \n");
 	int n = 1;
 	//scanf("%d", &select);
-	printf("%d\n", select);
+	//printf("%d\n", select);
 	//printf("%s \n", argv[2]);
+	select = 2;
 	FILE *fp;
-	select = 1;
 	fp = fopen("inputall.txt", "r");
 	if(fp != NULL){
 			
