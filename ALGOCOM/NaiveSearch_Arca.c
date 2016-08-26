@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]){
 	
 	int select = 0;
-	select = atoi(argv[1]);
+	//select = atoi(argv[1]);
 	char fromText[130];
 	char input[130] = "";
 	char pattern[130] = "";
@@ -22,11 +22,13 @@ int main(int argc, char *argv[]){
 	printf("[1] With string functions \n");
 	printf("[2] Without string functions \n");
 	int n = 1;
+	select = 2;
 	//scanf("%d", &select);
 	//printf("%d\n", select);
 	//printf("%s \n", argv[2]);
-	select = 2;
+	
 	FILE *fp;
+	//fp = fopen(argv[2], "r");
 	fp = fopen("inputall.txt", "r");
 	if(fp != NULL){
 			

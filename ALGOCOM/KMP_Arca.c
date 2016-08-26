@@ -39,6 +39,7 @@ int main(int argc, char* argv[]){
 	int x = 1;
 	int flag = 0;
 	int z = 0;
+	//FILE *fp = fopen(argv[1], "r");
 	FILE *fp = fopen("inputall.txt", "r");
 
 	if(fp != NULL){
